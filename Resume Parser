@@ -14,10 +14,10 @@ required_skills = ['python', 'machine learning', 'data analysis', 'communication
 
 # Define the candidates' resumes
 candidates = {
-    'John': 'John has experience in Python programming and machine learning. He has worked on various data analysis projects.',
-    'Sarah': 'Sarah is skilled in machine learning and data analysis. She also has excellent communication skills.',
-    'Michael': 'Michael has a strong background in data analysis and communication. He is familiar with Python and machine learning.',
-    'Emily': 'Emily is proficient in Python and has experience in machine learning. She is also a great communicator.'
+    'Prince': 'Prince has experience in Python programming and machine learning. He has worked on various data analysis projects.',
+    'Priya': 'Priya is skilled in machine learning and data analysis. She also has excellent communication skills.',
+    'Chunali': 'Chunali has a strong background in data analysis and communication. He is familiar with Python and machine learning.',
+    'Smruti': 'Smruti is proficient in Python and has experience in machine learning. She is also a great communicator.'
 }
 
 # Preprocess text
