@@ -1,0 +1,55 @@
+import nltk
+from nltk.corpus import stopwords
+from nltk.tokenize import word_tokenize
+from nltk.stem import WordNetLemmatizer
+from nltk.corpus import wordnet
+from nltk.metrics import jaccard_distance
+
+nltk.download('punkt')
+nltk.download('stopwords')
+nltk.download('wordnet')
+
+# Define the required skills for the job
+required_skills = ['python', 'machine learning', 'data analysis', 'communication']
+
+# Define the candidates' resumes
+candidates = {
+    'John': 'John has experience in Python programming and machine learning. He has worked on various data analysis projects.',
+    'Sarah': 'Sarah is skilled in machine learning and data analysis. She also has excellent communication skills.',
+    'Michael': 'Michael has a strong background in data analysis and communication. He is familiar with Python and machine learning.',
+    'Emily': 'Emily is proficient in Python and has experience in machine learning. She is also a great communicator.'
+}
+
+# Preprocess text
+def preprocess_text(text):
+    stop_words = set(stopwords.words('english'))
+    lemmatizer = WordNetLemmatizer()
+    
+    tokens = word_tokenize(text.lower())
+    filtered_tokens = [lemmatizer.lemmatize(token) for token in tokens if token.isalpha() and token not in stop_words]
+    
+    return filtered_tokens
+
+# Compare skills between required skills and candidate's skills
+def compare_skills(required_skills, candidate_skills):
+    required_skills_set = set(required_skills)
+    candidate_skills_set = set(candidate_skills)
+    
+    return 1 - jaccard_distance(required_skills_set, candidate_skills_set)
+
+# Find the best candidate for the job
+best_candidate = None
+best_score = 0
+
+for candidate, resume in candidates.items():
+    # Preprocess the resume
+    resume_tokens = preprocess_text(resume)
+    
+    # Compare skills
+    score = compare_skills(required_skills, resume_tokens)
+    
+    if score > best_score:
+        best_candidate = candidate
+        best_score = score
+
+print("Best candidate:", best_candidate)
